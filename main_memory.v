@@ -1,9 +1,9 @@
 module main_memory(
-  input             clk,  
-  input  	          mem_write, 		          // Write signal
-  input  	          mem_read, 		          // Read signal
-  input   [15:0]    addr, 	
-  inout   [15:0]    data	
+  input           clk,
+  input           mem_read,
+  input           mem_write,
+  input [15:0]    addr,
+  inout [15:0]    data
 );
     
   wire              read_data;
