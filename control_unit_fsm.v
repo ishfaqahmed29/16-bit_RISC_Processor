@@ -99,13 +99,13 @@ module control_unit_fsm(
         F1: begin
             reg_r <= 1;
             aop <= 1;
-		    aadd <= 1;
-  		    t1oe <= 1;
+	    aadd <= 1;
+  	    t1oe <= 1;
             t2ce <= 1;
- 		    aadd <= 1;
-  		    c1oe <= 1;
+ 	    aadd <= 1;
+	    c1oe <= 1;
             maroe <= 1;
-  		    mdrce <= 1;
+  	    mdrce <= 1;
             mem_read <= 1;
             nxt_state <= F2;
         end
@@ -333,11 +333,11 @@ module control_unit_fsm(
             end
             else if (opcode == 4'b1100)begin
                 aop <= 1;
-	            opr <= 3'b001;
-  	            t1oe <= 1;
-  	            t2ce <= 1;
- 	            c1oe <= 1;
-	            nxt_state <= E2;
+	        opr <= 3'b001;
+  	        t1oe <= 1;
+  	        t2ce <= 1;
+ 	        c1oe <= 1;
+	        nxt_state <= E2;
             end        
         end
         E2: begin
