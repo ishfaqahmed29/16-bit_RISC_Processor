@@ -1,18 +1,18 @@
 module alu(
-  input                clk,
-  input   [15:0]       x_in,
-  input   [15:0]       y_in,
-  input   [2:0] 	     opr,				          // ALU Operation input from decoder
-  output  		         z_flag,
-  output  [15:0]       result
+  input                 clk,
+  input   [15:0]        x_in,
+  input   [15:0]        y_in,
+  input   [2:0]         opr,
+  output                z_flag,
+  output  [15:0]        result
 );
 
-  wire [15:0]          x_in;
-  wire [15:0]          y_in;
-  wire [2:0]           opr;
-  wire                 z_flag;
-
-  reg  [15:0]          result;
+  wire [15:0]           x_in;
+  wire [15:0]           y_in;
+  wire [2:0]            opr;
+  
+  reg                   z_flag;
+  reg  [15:0]           result;
   
   assign z_flag = (result == 16'd0) ? 1'b1: 1'b0;
 
