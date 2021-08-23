@@ -1,11 +1,13 @@
 # 16-bit-RISC-Processor
-Tried implementing an ARM-based RISC CPU we learned to design in school. Von Neumann architecture has shared Memory for Data and Instruction
+Tried implementing an ARM-based RISC CPU we learned to design in school 
+
+Based on Von Neumann architecture, the Processor has a shared Memory for Data and Instruction
 
 RTL Design/Logic probably has plenty of mistakes, will try to fix them and add more details soon!!
 
-Working to increase size to 32-bit, add Branching Instructions, a Branch Predictor, and some I/O Memory-mapped ports
+Working to increase size to 32-bit & add Branching Instructions, a Branch Predictor, and some I/O Memory-mapped ports
 
-![CPU_CORE_BLOCK_DIAGRAM](https://user-images.githubusercontent.com/34355989/119415283-48239900-bcbf-11eb-816b-5bbe2aa1bd16.PNG)
+![RISC Processor](https://user-images.githubusercontent.com/34355989/130503093-e042ee3c-5b62-43e4-827c-6f33381d5753.jpg)
 
 Instruction Set Architecture:
 
