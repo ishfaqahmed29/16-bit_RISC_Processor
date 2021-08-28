@@ -3,11 +3,11 @@ Tried implementing an ARM-based RISC CPU we learned to design in school
 
 Based on Von Neumann architecture, the Processor has a shared Memory for Data and Instruction
 
-RTL Design/Logic probably has plenty of mistakes, will try to fix them and add more details soon!!
+RTL Design & Logic probably contains plenty of mistakes. Will try and fix them, and add more details soon!!
 
 Working to increase size to 32-bit & add Branching Instructions, a Branch Predictor, and some I/O Memory-mapped ports
 
-![RISC Processor (2)](https://user-images.githubusercontent.com/34355989/131221831-ecf1e057-db92-459e-9cf0-ce3a93000b7b.jpg)
+![RISC Processor (3)](https://user-images.githubusercontent.com/34355989/131222475-7010275d-9a94-4684-b708-0395ec91d95d.jpg)
 
 Instruction Set Architecture:
 
