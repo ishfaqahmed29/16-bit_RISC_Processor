@@ -7,7 +7,7 @@ RTL Design & Logic probably contains plenty of mistakes. Will try and fix them, 
 
 Working to increase size to 32-bit & add Branching Instructions, a Branch Predictor, and some I/O Memory-mapped ports
 
-![RISC Processor (3)](https://user-images.githubusercontent.com/34355989/131222475-7010275d-9a94-4684-b708-0395ec91d95d.jpg)
+![RISC Processor (1)](https://user-images.githubusercontent.com/34355989/131229780-c1a3811e-97c1-46cd-99f5-753cdd564696.jpg)
 
 Instruction Set Architecture:
 
