@@ -11,14 +11,15 @@ Working to increase size to 32-bit & add Branching Instructions, a Branch Predic
 
 Instruction Set Architecture:
 
-![CPU_ISA](https://user-images.githubusercontent.com/34355989/119415327-6093b380-bcbf-11eb-8a33-f40fd2a8862c.PNG)
+![CPU_ISA](https://user-images.githubusercontent.com/34355989/132104486-d62c129c-f9f9-43a4-bff4-340744c110ef.PNG)
 
 Instruction Type: RRR, RR, RRI, JAL
 
-![CPU_INSTRUCTION_FORMAT](https://user-images.githubusercontent.com/34355989/119415344-6a1d1b80-bcbf-11eb-92e1-9679f9b6dcd1.PNG)
+![CPU_INSTRUCTION_FORMAT](https://user-images.githubusercontent.com/34355989/132104489-3404e934-ce09-4fde-9b02-9f45f44d9c6d.PNG)
 
 Instruction Cycle: Fetch -> Decode -> Execute
 
 Pipelined Stages: F0->F1->F2->D0->(E0->E1->E2 OR E3->E4 OR E5->E6->E7)
 
-![CPU_INSTRUCTION_CYCLE](https://user-images.githubusercontent.com/34355989/119415356-70ab9300-bcbf-11eb-93c1-609aa4a5bb2a.PNG)
+![CPU_INSTRUCTION_CYCLE](https://user-images.githubusercontent.com/34355989/132104495-23361050-b7db-4e9b-a66e-c880be1f05a1.PNG)
+
