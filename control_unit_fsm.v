@@ -87,7 +87,7 @@ module control_unit_fsm(
         end
     end
 
-    always @ (state or instruction)begin
+    always @ (posedge clk or state or instruction)begin
         case(state)begin
         F0: begin
             reg_r <= 1;
@@ -99,13 +99,13 @@ module control_unit_fsm(
         F1: begin
             reg_r <= 1;
             aop <= 1;
-	    aadd <= 1;
-  	    t1oe <= 1;
+	        aadd <= 1;
+  	        t1oe <= 1;
             t2ce <= 1;
- 	    aadd <= 1;
-	    c1oe <= 1;
+ 	        aadd <= 1;
+	        c1oe <= 1;
             maroe <= 1;
-  	    mdrce <= 1;
+  	        mdrce <= 1;
             mem_read <= 1;
             nxt_state <= F2;
         end
@@ -121,154 +121,158 @@ module control_unit_fsm(
             anop <= 1;
             pcoe <= 1;
             t2oe <= 1;
-            
-            if(opcode == 4'b0000)begin
-                dword <= 4'bzzzz;	      
-                sxword <= 4'bzzzz;	      
-                syword <= 4'bzzzz;
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b0001)begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];	      
-                syword <= instruction[3:0];
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b0010)begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];	      
-                syword <= instruction[3:0];
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b0011)begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];	      
-                syword <= instruction[3:0];
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b0100)begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];	      
-                syword <= instruction[3:0];
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b0101)begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];	      
-                syword <= instruction[3:0];
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b0110)begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];
-                syword <= 4'bzzzz;
-                nxt_state <= E3;
-            end 
-            else if(opcode == 4'b0111: begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];
-                syword <= 4'bzzzz;
-                nxt_state <= E3;
-            end 
-            else if(opcode == 4'b1000: begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];	      
-                syword <= instruction[3:0];
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b1001: begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];	      
-                syword <= instruction[3:0];
-                nxt_state <= E0;
-            end 
-            else if(opcode == 4'b1010: begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];
-                syword <= 4'bzzzz;
-                nxt_state <= E5;
-            end 
-            else if(opcode == 4'b1011)begin
-                dword <= instruction[11:8];	      
-                sxword <= instruction[7:4];
-                syword <= 4'bzzzz;
-                nxt_state <= E5;
-            end 
-            else if(opcode == 4'b1100)begin
-                dword <= instruction[11:8];	      
-                sxword <= 4'bzzzz;
-                syword <= 4'bzzzz;
-                nxt_state <= E0;
-            end 
-                default: nxt_state <= D0;
+            case (opcode) begin
+            4'b0000: begin
+            dword <= 4'bzzzz;	      
+            sxword <= 4'bzzzz;	      
+            syword <= 4'bzzzz;
+            nxt_state <= E0;
             end
+            4'b0001: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= instruction[3:0];
+            nxt_state <= E0;
+            end
+            4'b0010: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= instruction[3:0];
+            nxt_state <= E0;
+            end
+            4'b0011: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= instruction[3:0];
+            nxt_state <= E0;
+            end
+            4'b0100: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= instruction[3:0];
+            nxt_state <= E0;
+            end      
+            4'b0101: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= instruction[3:0];
+            nxt_state <= E0;
+            end 
+            4'b0110: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= 4'bzzzz;
+            nxt_state <= E3;
+            end
+            4'b0111: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= 4'bzzzz;
+            nxt_state <= E3;
+            end
+            4'b1000: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= instruction[3:0];
+            nxt_state <= E0;
+            end
+            4'b1001: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= instruction[3:0];
+            nxt_state <= E0;
+            end
+            4'b1010: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= 4'bzzzz;
+            nxt_state <= E5;
+            end
+            4'b1011: begin
+            dword <= instruction[11:8];
+            sxword <= instruction[7:4];
+            syword <= 4'bzzzz;
+            nxt_state <= E5;
+            end 
+            4'b1100: begin
+            dword <= instruction[11:8];
+            sxword <= 4'bzzzz;
+            syword <= 4'bzzzz;
+            nxt_state <= E0;
+            end
+            default: nxt_state <= D0;
+            endcase
         end
         E0: begin
-            if(opcode == 4'b0000)begin
-                nxt_state <= E1;    
-            end
-            else if(opcode == 4'b0001)begin
+            case (opcode) begin
+                4'b0000: begin
+                nxt_state <= E1;
+                end
+                4'b0001: begin
                 reg_r <= 1;
                 anop <= 1;
                 sxw <= 1;
                 t1ce <= 1;
                 nxt_state <= E1;
-            end 
-            else if(opcode == 4'b0010)begin
+                end
+                4'b0010: begin
+                reg_r <= 1;
+                anop <= 1;
+                sxw <= 1;
+                t1ce <= 1;
+                nxt_state <= E1;
+                end
+                4'b0011: begin
                 reg_r <= 1;
                 anop <= 1;
                 sxw <= 1;        
                 t1ce <= 1;
                 nxt_state <= E1;
-            end
-            else if(opcode == 4'b0011)begin
+                end
+                4'b0100: begin
                 reg_r <= 1;
                 anop <= 1;
                 sxw <= 1;        
                 t1ce <= 1;
                 nxt_state <= E1;
-            end
-            else if(opcode == 4'b0100)begin
+                end      
+                4'b0101: begin
                 reg_r <= 1;
                 anop <= 1;
                 sxw <= 1;        
                 t1ce <= 1;
                 nxt_state <= E1;
-            end
-            else if(opcode == 4'b0101)begin
+                end 
+                4'b1000: begin
                 reg_r <= 1;
                 anop <= 1;
                 sxw <= 1;        
                 t1ce <= 1;
                 nxt_state <= E1;
-            end
-            else if(opcode == 4'b1000)begin
+                end
+                4'b1001: begin
                 reg_r <= 1;
                 anop <= 1;
                 sxw <= 1;        
                 t1ce <= 1;
                 nxt_state <= E1;
-            end
-            else if(opcode == 4'b1001)begin
-                reg_r <= 1;
-                anop <= 1;
-                sxw <= 1;        
-                t1ce <= 1;
-                nxt_state <= E1;
-            end
-            else if(opcode == 4'b1100)begin
+                end
+                4'b1100: begin
                 reg_r <= 1;
                 anop <= 1;
                 t1ce <= 1;
                 pcoe <= 1;
                 nxt_state <= E1;
-            end
+                end
+                default: nxt_state <= E1;
+            endcase
         end
         E1: begin
-            if(opcode == 4'b0000)begin
+            case (opcode) begin
+                4'b0000: begin
                 nxt_state <= E2;
-            end
-            else if(opcode == 4'b0001)begin
+                end
+                4'b0001: begin
                 reg_r <= 1;
                 t1oe <= 1;
                 t2ce <= 1;
@@ -276,8 +280,8 @@ module control_unit_fsm(
                 aadd <= 1;
                 syw <= 1;
                 nxt_state <= E2;
-            end
-            else if (opcode == 4'b0010)begin
+                end
+                4'b0010: begin
                 reg_r <= 1;
                 t1oe <= 1;
                 t2ce <= 1;
@@ -285,8 +289,8 @@ module control_unit_fsm(
                 opr <= 3'b010;
                 syw <= 1;
                 nxt_state <= E2;
-            end
-            else if(opcode == 4'b0011)begin
+                end
+                4'b0011: begin
                 reg_r <= 1;
                 t1oe <= 1;
                 t2ce <= 1;
@@ -294,8 +298,8 @@ module control_unit_fsm(
                 opr <= 3'b011;
                 syw <= 1;
                 nxt_state <= E2;
-            end
-            else if (opcode == 4'b0100)begin
+                end
+                4'b0100: begin
                 reg_r <= 1;
                 t1oe <= 1;
                 t2ce <= 1;
@@ -303,8 +307,8 @@ module control_unit_fsm(
                 opr <= 3'b100;
                 syw <= 1;
                 nxt_state <= E2;
-            end
-            else if(opcode == 4'b0101)begin
+                end      
+                4'b0101: begin
                 reg_r <= 1;
                 t1oe <= 1;
                 t2ce <= 1;
@@ -312,8 +316,8 @@ module control_unit_fsm(
                 opr <= 3'b101;
                 syw <= 1;
                 nxt_state <= E2;
-            end
-            else if (opcode == 4'b1000)begin
+                end 
+                4'b1000: begin
                 reg_r <= 1;
                 t1oe <= 1;
                 t2ce <= 1;
@@ -321,8 +325,8 @@ module control_unit_fsm(
                 opr <= 3'b001;
                 syw <= 1;
                 nxt_state <= E2;
-            end
-            else if(opcode == 4'b1001)begin
+                end
+                4'b1001: begin
                 reg_r <= 1;
                 t1oe <= 1;
                 t2ce <= 1;
@@ -330,76 +334,81 @@ module control_unit_fsm(
                 opr <= 3'b010;
                 syw <= 1;
                 nxt_state <= E2;
-            end
-            else if (opcode == 4'b1100)begin
+                end
+                4'b1100: begin
                 aop <= 1;
-	        opr <= 3'b001;
-  	        t1oe <= 1;
-  	        t2ce <= 1;
- 	        c1oe <= 1;
-	        nxt_state <= E2;
-            end        
+	            opr <= 3'b001;
+  	            t1oe <= 1;
+  	            t2ce <= 1;
+ 	            c1oe <= 1;
+	            nxt_state <= E2;
+                end
+                default: nxt_state <= E2;
+            endcase       
         end
         E2: begin
-            if(opcode == 4'b0000)begin
+            case (opcode) begin
+                4'b0000: begin
                 nxt_state <= F0;
-            end
-            else if(opcode == 4'b0001)begin
+                end
+                4'b0001: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
-            else if (opcode == 4'b0010)begin
+                end
+                4'b0010: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
-            else if(opcode == 4'b0011)begin
+                end
+                4'b0011: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
-            else if (opcode == 4'b0100)begin
+                end
+                4'b0100: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
-            else if(opcode == 4'b0101)begin
+                end      
+                4'b0101: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
-            else if (opcode == 4'b1000)begin
+                end 
+                4'b1000: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
-            else if(opcode == 4'b1001)begin
+                end
+                4'b1001: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
-            else if (opcode == 4'b1100)begin
+                end
+                4'b1100: begin
                 reg_w <= 1;
                 anop <= 1;
                 dxw <= 1;
                 t2oe <= 1;
                 nxt_state <= F0;
-            end
+                end
+                default: nxt_state <= F0;
+            endcase
         end
         E3: begin
             if(opcode == 4'b0110)begin
